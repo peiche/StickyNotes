@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sticky Notes</title>
+	<link rel="stylesheet" href="css/custom-theme/jquery-ui-1.8.6.custom.css" />
+	<link rel="stylesheet" href="css/custom-theme/jquery-ui-selectmenu.css" />
+	<link rel="stylesheet" href="css/farbtastic/farbtastic.css" />
+	<link rel="stylesheet" href="fonts/iconic.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/topnav.css" />
+	<link rel="stylesheet" href="css/stickies.css" />
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/jquery-ui-1.8.14.custom.min.js"></script>
+	<script src="js/jquery-ui-selectmenu.js"></script>
+	<script src="js/jquery-ui-spinner.min.js"></script>
+	<script src="js/jquery.sortElements.js"></script>
+	<script src="js/jquery.scrollTo-min.js"></script>
+	<script src="js/jquery.contextMenu.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/farbtastic.js"></script>
+	<script src="js/json2.js"></script>
+	<script src="js/sanitize.js"></script>
+	<script src="js/twitter-text.js"></script>
+	<script src="js/stickies-shared.js"></script>
+	<script src="js/stickies.js"></script>
+</head>
+<body>
+
+	<script src="js/stickies-exec.js"></script>
+
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="#">Sticky Notes</a>
+
+				<div class="nav-collapse">
+					<ul class="nav pull-left">
+						<li>
+							<a id="add-sticky_button" href="#" class="btn btn-info"><i class="icon-edit icon-white"></i> <span>New Note</span></a>
+						</li>
+					</ul>
+					<ul class="nav pull-right">
+						<li id="undo-container">
+							<a id="undo" href="#" rel="tooltip" title="Restore deleted note"><i class="icon-repeat flip"></i></a>
+						</li>
+						<li class="divider-vertical"></li>
+						<li>
+							<a id="starred" href="#" rel="tooltip" title="Starred Notes"><i class="icon-star"></i></a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="Tags"><i class="icon-tags"></i> <b class="caret"></b></a>
+							<ul id="tag-list" class="dropdown-menu">
+								<li class="nav-header">No tags</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="note-count" class="badge badge-info">0</span> <b class="caret"></b></a>
+							<ul id="note-list" class="dropdown-menu">
+								<li class="nav-header">No notes</li>
+							</ul>
+						</li>
+						<li class="divider-vertical"></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i> <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#whats-new-dialog" data-toggle="modal">What's New <i class="icon-bullhorn icon-white pull-right"></i></a></li>
+								<li><a href="options.html">Settings <i class="icon-wrench icon-white pull-right"></i></a></li>
+								<li><a id="pop-out" href="#">Pop Out <i class="icon-share icon-white pull-right"></i></a></li>
+								<li><a class="pop-in" href="#">Pop Back In <i class="icon-share icon-white pull-right flip"></i></a></li>
+								<li class="divider"></li>
+								<li><a id="add-sticky" href="#">New Note <i class="icon-edit icon-white pull-right"></i></a></li>
+								<li><a id="delete-all" href="#">Delete All Notes <i class="icon-warning-sign icon-white pull-right"></i></a></li>
+								<li class="divider"></li>
+								<li><a id="free-view" href="#" class="set"><i class="icon-ok"></i> Free Floating View</a></li>
+								<li><a id="grid-view" href="#"><i class="icon-ok"></i> Grid View</a></li>
+								<li><a id="single-view" href="#"><i class="icon-ok"></i> Single Note View</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="subnav subnav-fixed">
+		<ul class="nav nav-tabs">
+			<li class="nav-header">Active Tags:</li>
+			<li id="tags" class="btn-toolbar"></li>
+		</ul>
+	</div>
+
+	<div id="options-dialog" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3><i class="icon-cog"></i> Note Options</h3>
+		</div>
+		<div class="modal-body">
+			<div>
+				<label>Note Title</label>
+				<input type="text" id="options-notetitle" class="span3"/>
+			</div>
+
+			<div class="control-group">
+				<label>Note Background</label>
+				<div class="input-append">
+					<input id="notecolor" type="text" class="input-mini" /><a id="cpnote-btn" href="#" class="btn" rel="tooltip" title="Open color picker" data-trigger="manual" data-placement="right"><i class="icon-chevron-right"></i></a>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label>Text Color, Font, &amp; Size</label>
+				<div class="input-append">
+					<input id="textcolor" type="text" class="input-mini" /><a id="cptext-btn" href="#" class="btn" rel="tooltip" title="Open color picker" data-trigger="manual" data-placement="right"><i class="icon-chevron-right"></i></a>
+				</div>
+
+				<div>
+					<select id="options-fontface" class="span3">
+						<option value="Helvetica,'Helvetica Nueue'" class="helvetica">Helvetica/Helvetica Nueue</option>
+						<option value="Arial, Helvetica, sans-serif" class="arial">Arial, Helvetica</option>
+						<option value="'Arial Black', Gadget, sans-serif" class="arial-black">Arial Black, Gadget</option>
+						<option value="'Bookman Old Style', serif" class="bookman">Bookman Old Style</option>
+						<option value="Courier, monospace" class="courier">Courier</option>
+						<option value="'Courier New', Courier, monospace" class="courier-new">Courier New</option>
+						<option value="Garamond, serif" class="garamond">Garamond</option>
+						<option value="Georgia, serif" class="georgia">Georgia</option>
+						<option value="Impact, Charcoal, sans-serif" class="impact">Impact, Charcoal</option>
+						<option value="'Lucida Console', Monaco, monospace" class="lucida-console">Lucida Console, Monaco</option>
+						<option value="'Lucida Sans Unicode', 'Lucida Grande', sans-serif" class="lucida-sans-unicode">Lucida Sans Unicode, Lucida Grande</option>
+						<option value="'MS Sans Serif', Geneva, sans-serif" class="ms-sans-serif">MS Sans Serif, Geneva</option>
+						<option value="'MS Serif', 'New York', sans-serif" class="ms-serif">MS Serif, New York</option>
+						<option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif" class="palatino">Palatino Linotype, Book Antiqua, Palatino</option>
+						<option value="Symbol, sans-serif" class="symbol">Symbol</option>
+						<option value="Tahoma, Geneva, sans-serif" class="tahoma">Tahoma, Geneva</option>
+						<option value="'Times New Roman', Times, serif" class="times">Times New Roman, Times</option>
+						<option value="'Trebuchet MS', Helvetica, sans-serif" class="trebuchet">Trebuchet MS, Helvetica</option>
+						<option value="Verdana, Geneva, sans-serif" class="verdana">Verdana, Geneva</option>
+						<option value="Webdings, sans-serif" class="webdings">Webdings</option>
+						<option value="Wingdings, 'Zapf Dingbats', sans-serif" class="wingdings">Wingdings, Zapf Dingbats</option>
+					</select>
+				</div>
+
+				<div class="input-append">
+					<input type="text" id="options-fontsize" value="16" maxlength="3" class="input-mini" /><span class="add-on">px</span>
+				</div>
+			</div>
+
+			<label class="checkbox fix">
+				<input type="checkbox" id="options-textwrap" value="true" />
+				Disable text wrapping
+			</label>
+
+		</div>
+		<div class="modal-footer">
+			<a href="#" id="save-as-default" class="btn btn-info btn-small pull-left" data-dismiss="modal"><i class="icon-heart icon-white"></i> <span>Use note settings as default</span></a>
+			<a href="#" class="btn btn-success" data-dismiss="modal">Save</a>
+		</div>
+	</div>
+
+	<div id="delete-dialog" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3><i class="icon-warning-sign"></i> Delete Note</h3>
+		</div>
+		<div class="modal-body">
+			<p>Are you sure you want to remove this note?</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">No</a>
+			<a href="#" class="btn btn-danger" data-dismiss="modal">Yes</a>
+		</div>
+	</div>
+
+	<div id="delete-all-dialog" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3><i class="icon-warning-sign"></i> Delete All Notes</h3>
+		</div>
+		<div class="modal-body">
+			<p>Are you sure you want to remove all your notes?</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">No</a>
+			<a href="#" class="btn btn-danger" data-dismiss="modal">Yes</a>
+		</div>
+	</div>
+
+	<div id="save-as-default-dialog" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3><i class="icon-heart"></i> Save Default Note Settings</h3>
+		</div>
+		<div class="modal-body">
+			<p>
+				Your default note settings are updated. If you want to reset
+				them, you may do so on the settings page.
+			</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Okay</a>
+		</div>
+	</div>
+
+	<div id="whats-new-dialog" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3><i class="icon-bullhorn"></i> What's New in 1.9</h3>
+		</div>
+		<div class="modal-body">
+			<h4>Additions</h4>
+			<p>
+				<b>Customizable new note title</b>. Now you can change the title of newly created notes.
+				Options include text of your choice, the time and date, or the timestamp used in creating
+				each note.
+			</p>
+			<p>
+				<b>Single note view.</b> A third view option (in addition to Free Floating and Grid) has been
+				added. This is to accomodate smaller windows, so that notes do not constantly need to be
+				resized and moved around.
+			</p>
+			<p>
+				<b>Pop out option.</b> Click "Pop Out" in the menu to get a Sticky Notes popup, which is resizable.
+				If you are running a dev or Canary channel build of Chrome, the popup will be a panel.
+				(Users of other builds can visit <a href="chrome://flags/">chrome://flags</a>
+				[right-click and select "Open in new tab"] and enable panels.)
+			</p>
+			<p>
+				Tag dropdown list will highlight the tagged notes as you hover your mouse over the tags.
+			</p>
+			<p>
+				Added option to hide top bar.
+			</p>
+			<p>
+				Added more background image patterns.
+			</p>
+
+			<h4>Changes</h4>
+			<p>
+				Upgraded to <b>jQuery 1.7.2</b> and <b>Bootstrap 2.1.1</b>.
+			</p>
+			<p>
+				<b>Restyled note tagging.</b> Active tags now appear on their own bar. When a tag actively
+				filtering notes, click the tag's name to filter by only that tag; click the &times; next
+				to its name to remove it.
+			</p>
+			<p>
+				<b>Responsive title bar.</b> When the window is resized, the title bar will hide various
+				elements to maintain functionality and consistent appearance.
+			</p>
+			<p>
+				<b>Better text controls.</b> Added undo/redo functionality on a per-note basis. Text controls
+				indicate formatting based on cursor location. Added controls for alignment (left, center, and right)
+				and indentation, as well as a button for clearing text of all formatting.
+			</p>
+			<p>
+				Notes now remember stack order.
+			</p>
+			<p>
+				Fixed a bug where a deleted note would still appear in the note dropdown,
+				even though the total note count was calculated correctly. (This bug also affected
+				the tag list, which is also working properly.)
+			</p>
+		</div>
+	</div>
+
+	<iframe id="printframe"></iframe>
+</body>
+</html>

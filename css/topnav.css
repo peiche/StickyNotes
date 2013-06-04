@@ -1,0 +1,516 @@
+/**
+ * HEADER
+ **/
+
+.navbar {
+	-webkit-user-select: none;
+}
+
+.navbar a {
+	outline: none;
+}
+
+.navbar .container {
+	width: auto;
+	margin: 0 10px;
+}
+
+.navbar .nav > li > a.btn {
+	margin-left: 10px;
+}
+.navbar .nav > li:first-child > a.btn{
+	margin-left: 0;
+}
+
+.navbar .nav > li > a {
+	-webkit-transition: padding 200ms;
+	transition: padding 200ms;
+}
+
+.dropdown-menu .divider {
+	padding: 0;
+}
+
+.dropdown-menu li {
+	padding: 0;
+}
+
+.dropdown-menu li a:hover i {
+	background-image: url('../img/glyphicons-halflings-white.png');
+}
+
+.navbar-search {
+	margin: 6px 10px 0;
+}
+
+.navbar-search input#note-filter {
+	padding-left: 25px;
+	margin-bottom: 0;
+}
+.navbar-search .icon-search {
+	position: absolute;
+	top: 7px;
+	left: 7px;
+}
+
+.navbar .nav .badge {
+	font-size: inherit;
+}
+
+.navbar .nav .btn {
+	padding: 4px 10px;
+	margin: 5px 0;
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.navbar .nav > li > .btn:hover {
+	color: #fff;
+}
+.navbar .nav > li > .btn.btn-info:hover {
+	background-color: #2F96B4;
+}
+.navbar .nav > li > .btn.btn-danger:hover {
+	background-color: #BD362F;
+}
+
+.navbar #clear-search {
+	position: absolute;
+	top: 5px;
+	right: 7px;
+	padding: 0;
+}
+
+.dropdown-menu .icon-white {
+	display: none;
+}
+.dropdown-menu a:hover .icon-white {
+	display: block;
+}
+
+.navbar-inverse [class^="icon-"],
+.navbar-inverse [class*=" icon-"] {
+	background-image: url('../img/glyphicons-halflings-white.png');
+}
+
+.navbar-inverse .dropdown-menu [class^="icon-"],
+.navbar-inverse .dropdown-menu [class*=" icon-"] {
+	background-image: url('../img/glyphicons-halflings.png');
+}
+
+/** SUBNAV **/
+
+.subnav {
+	width: 100%;
+	height: 38px;
+	background-color: #eeeeee; /* Old browsers */
+	background-repeat: repeat-x; /* Repeat the gradient */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+	background-image: -webkit-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Chrome 10+,Safari 5.1+ */
+	background-image: linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* W3C */
+	border: 1px solid #e5e5e5;
+	border-radius: 5px 5px 0 0;
+	box-sizing: border-box;
+	-webkit-user-select: none;
+}
+
+.subnav.nav {
+	margin-bottom: 0;
+}
+
+.subnav .nav > li > a {
+	margin: 0;
+	padding-top:    8px;
+	padding-bottom: 8px;
+	border-left: 1px solid #f5f5f5;
+	border-right: 1px solid #e5e5e5;
+	border-radius: 0;
+}
+
+.subnav .nav > .active > a,
+.subnav .nav > .active > a:hover {
+	padding-left: 13px;
+	color: #777;
+	background-color: #e9e9e9;
+	border-right-color: #ddd;
+	border-left: 0;
+	box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+}
+
+.subnav .nav > .active > a .caret,
+.subnav .nav > .active > a:hover .caret {
+	border-top-color: #777;
+}
+
+.subnav .nav > li:first-child > a,
+.subnav .nav > li:first-child > a:hover {
+	border-left: 0;
+	padding-left: 12px;
+	border-radius: 5px 0 0 5px;
+}
+
+.subnav .nav > li:last-child > a {
+	border-right: 0;
+}
+
+.subnav .dropdown-menu {
+	border-radius: 0 0 5px 5px;
+}
+
+.subnav-fixed {
+	position: fixed;
+	top: 40px;
+	left: 0;
+	right: 0;
+	z-index: 1020; /* 10 less than .navbar-fixed to prevent any overlap */
+	border-color: #d5d5d5;
+	border-width: 0 0 1px; /* drop the border on the fixed edges */
+	border-radius: 0;
+}
+.subnav-fixed .nav {
+	width: 940px;
+	margin: 0 auto;
+	padding: 0 1px;
+}
+.subnav .nav > li:first-child > a,
+.subnav .nav > li:first-child > a:hover {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+/* okay, so modals aren't technically part of the navigation. but they're still a global thing. */
+
+.modal {
+	background-color: whiteSmoke;
+}
+
+.modal.fade {
+	top: -100%;
+	-webkit-transition: opacity .3s linear;
+	transition: opacity .3s linear;
+}
+
+.modal::-webkit-scrollbar {
+	background: transparent;
+	width: 2px;
+}
+.modal::-webkit-scrollbar-button {
+	display: none;
+}
+.modal::-webkit-scrollbar-track {
+	background: transparent;
+}
+.modal::-webkit-scrollbar-thumb {
+	background: rgba(0,0,0,0.25); /* 0,0,0,0 */
+	-webkit-transition: all 200ms;
+	transition: all 200ms;
+}
+.modal::-webkit-scrollbar-thumb:hover {
+	background: rgba(0,0,0,0.5);
+}
+
+.modal:hover::-webkit-scrollbar-thumb {
+	background: rgba(0,0,0,0.25);
+}
+
+.modal ::-webkit-scrollbar {
+	background: transparent;
+	width: 15px;
+	margin-right: 5px;
+}
+.modal ::-webkit-scrollbar-button {
+	display: none;
+}
+.modal ::-webkit-scrollbar-track {
+	background: #fff;
+}
+.modal ::-webkit-scrollbar-thumb {
+	background: rgba(0,0,0,0.25);
+	border: 5px solid #fff;
+	border-radius: 25px;
+}
+.modal ::-webkit-scrollbar-thumb:hover {
+	background: rgba(0,0,0,0.5);
+}
+
+.modal-header h3 [class^="icon-"],
+.modal-header h3 [class*=" icon-"] {
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.modal-body {
+	background-color: #fff;
+}
+
+/* some responsive adjustment crapola */
+
+@media (max-width: 800px) {
+
+	.navbar ul.nav > li.navbar-search {
+		display: none;
+	}
+
+}
+
+@media (max-width: 560px) {
+
+	.modal {
+		width: auto;
+		left: 10px;
+		right: 10px;
+		margin-left: 0px;
+	}
+
+}
+
+@media (max-width: 540px) {
+
+	.navbar ul.nav li.divider-vertical {
+		display: none;
+	}
+
+}
+
+@media (max-width: 500px) {
+
+	#add-sticky_button > span {
+		display: none;
+	}
+	.navbar ul.nav.pull-right {
+		margin: 0;
+	}
+
+}
+
+@media (max-width: 385px) {
+
+	body.single {
+		overflow: hidden;
+	}
+
+}
+
+@media (max-width: 445px) {
+	.modal.fade,
+	.modal.fade.in {
+		display: none;
+		margin: 0 !important;
+		padding: 0;
+		top: 45px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border: none;
+		border-radius: 0;
+		bottom: 0;
+		width: 100% !important;
+		height: auto;
+		overflow-y: auto !important;
+	}
+	
+	.modal-header {
+		position: fixed;
+		background: whiteSmoke;
+		left: 0;
+		right: 0;
+		top: 0;
+	}
+	
+	.modal-body {
+		max-height: none;
+	}
+}
+
+@media (max-width: 350px) {
+	.navbar .nav > li > a {
+		padding: 10px;
+	}
+}
+@media (max-width: 300px) {
+	.navbar .nav > li > a {
+		padding: 10px 8px;
+	}
+	
+	#save-as-default span {
+		display: none;
+	}
+}
+@media (max-width: 285px) {
+	.navbar .nav > li > a {
+		padding: 10px 6px;
+	}
+}
+@media (max-width: 275px) {
+	.navbar .nav > li > a {
+		padding: 10px 4px;
+	}
+}
+@media (max-width: 265px) {
+	.navbar .nav > li > a {
+		padding: 10px 2px;
+	}
+}
+
+@media (max-height: 500px) {
+	.modal.fade,
+	.modal.fade.in {
+		display: none;
+		margin: 0 !important;
+		padding: 0;
+		top: 45px;
+		left: 0;
+		right: 0;
+		border: none;
+		border-radius: 0;
+		bottom: 60px; /* 99px; */
+		width: 100% !important;
+		height: auto;
+		overflow-y: auto !important;
+	}
+	
+	#whats-new-dialog.modal {
+		bottom: 99px;
+	}
+	
+	.modal-header,
+	.modal-footer {
+		position: fixed;
+		left: 0;
+		right: 0;
+		border-color: #ddd;
+	}
+	
+	.modal-header {
+		top: 0;
+		background: whiteSmoke;
+	}
+	
+	.modal-footer {
+		bottom: 0;
+		min-height: 28px;
+		height: auto;
+		border-radius: 0;
+	}
+	
+	.modal-body {
+		max-height: none;
+	}
+	
+	.modal ::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+/* animation and effects */
+
+@-webkit-keyframes rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(180deg);
+	}
+}
+
+.rotate {
+	-webkit-animation-duration: 0.75s;
+	-webkit-animation-name: rotate;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+
+.flip {
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
+
+/* missing disabled states */
+
+.dropdown-menu > .disabled > a {
+	color: #999;
+	cursor: default;
+	pointer-events: none;
+}
+
+.dropdown-menu >. disabled > a:hover {
+	background-color: transparent;
+}
+
+/* popover custom stuff */
+
+.popover {
+	z-index: 2060;
+}
+
+.popover .popover-title {
+	display: none;
+}
+
+.popover .popover-inner {
+	width: auto;
+}
+
+.popover .popover-content {
+	border-radius: 3px;
+	position: relative;
+}
+
+.popover .close {
+	position: absolute;
+	top: 0;
+	right: 5px;
+}
+
+.popover .tab-pane {
+	padding-top: 20px;
+}
+
+/* popover backdrop, so any click away will close the popover */
+
+.popover-backdrop {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 2050;
+}
+
+/* extra caret classes */
+
+.caret.right {
+	border-left-color: black;
+	border-top-color: transparent;
+	border-bottom: 4px solid transparent;
+}
+
+.btn .caret.right {
+	margin-top: 4px;
+}
+
+/* select element */
+
+select {
+	-webkit-appearance: button;
+	vertical-align: top;
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAWklEQVQokWNgoAOIAuI0PDiKaJMSgYCZmfkbkPkfHYPEQfJEG/b//3+FBQsWLGRjY/uJbBCIDxIHyRNtGDYDyTYI3UA+Pr4vFBmEbODbt2+bKDYIyUBWYtQBAIRzRP/XKJ//AAAAAElFTkSuQmCC');
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding: 0 20px 0 4px;
+	-webkit-transition: border linear .2s,box-shadow linear .2s;
+	transition: border linear .2s,box-shadow linear .2s;
+	border-radius: 3px;
+	vertical-align: baseline;
+	cursor: pointer;
+}
+
+select:hover {
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+select:focus {
+	outline: none;
+	border-color: rgba(82, 168, 236, 0.8);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(82, 168, 236, 0.6);
+}

@@ -1,0 +1,21 @@
+{
+   "app": {
+      "launch": {
+         "local_path": "main.html"
+      }
+   },
+   "background": {
+      "page": "background.html"
+   },
+   "description": "Quick and easy notes for Chrome",
+   "icons": {
+      "128": "img/icons/icon_128.png",
+      "16": "img/icons/icon_16.png"
+   },
+   "manifest_version": 2,
+   "name": "Sticky Notes",
+   "offline_enabled": true,
+   "options_page": "options.html",
+   "permissions": [ "unlimitedStorage", "contextMenus", "tabs" ],
+   "version": "1.9.2"
+}

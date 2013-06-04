@@ -1,0 +1,1 @@
+STICKIES.open();

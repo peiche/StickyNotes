@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sticky Notes</title>
+	<link rel="stylesheet" type="text/css" href="css/custom-theme/jquery-ui-1.8.6.custom.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/topnav.css" />
+	<link rel="stylesheet" type="text/css" href="css/options.css" />
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/jquery-ui-1.8.14.custom.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+	<script src="js/options.js"></script>
+</head>
+
+<body data-spy="scroll">
+
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="#"><i class="icon-wrench icon-white" style="margin-top: 5px;"></i> Settings</a>
+				<div class="nav-collapse">
+					<ul class="nav pull-right">
+						<li class="responsive">
+							<a id="reset-notes" href="#modal-reset-note" class="btn btn-danger" data-toggle="modal"><i class="icon-repeat icon-white flip"></i> <span>Reset note appearance</span></a>
+						</li>
+						<li class="responsive">
+							<a id="save" href="main.html" class="btn btn-info btn-large"><i class="icon-ok icon-white"></i> Save</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="subnav subnav-fixed">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#appearance" data-toggle="tab">Appearance</a></li>
+			<li><a href="#behavior" data-toggle="tab">Behavior</a></li>
+			<li><a href="#import-export" data-toggle="tab">Import/Export</a></li>
+		</ul>
+	</div>
+
+	<div class="container">
+		<section id="appearance">
+
+			<div class="page-header">
+				<h1>Appearance</h1>
+			</div>
+
+			<h2>Choose a background:</h2>
+
+			<ul class="thumbnails background-list">
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/corkboard.jpg');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/wood_pattern.png');"></span>
+					</a>
+				</li>
+
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/fabric_plaid.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/45degreee_fabric.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/60degree_gray.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/batthern.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/broken_noise.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/black-Linen.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/blackmamba.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('img/patterns/black_denim.png');"></span>
+					</a>
+				</li>
+
+				<li class="span2 option">
+					<a id="random-bg" href="#" class="thumbnail">
+						<span style="background: url('img/options/random.png') center center no-repeat;"></span>
+					</a>
+				</li>
+				<li class="span2 option">
+					<a href="#modal-bg-more" class="thumbnail" data-toggle="modal">
+						<span style="background: url('img/options/more.png') center center no-repeat;"></span>
+					</a>
+				</li>
+
+			</ul>
+
+			<h3>Or enter the URL for your own.</h3>
+			<p class="form-inline">
+				<input type="text" id="background-path" class="span5" />
+				<a id="background-update" href="#" class="btn">Update</a>
+			</p>
+
+			<h3>Top bar</h3>
+			<ul class="top-bar-color thumbnails">
+				<li class="span3">
+					<a id="navbar-inverse" href="#" class="thumbnail">
+						<span></span>
+					</a>
+				</li>
+				<li class="span3">
+					<a id="light" href="#" class="thumbnail">
+						<span></span>
+					</a>
+				</li>
+			</ul>
+
+			<p>
+				<label class="checkbox">
+					<input type="checkbox" id="top-bar-hide" value="true" />
+					Auto-hide top bar
+				</label>
+			</p>
+
+		</section>
+
+		<hr class="soften" />
+
+		<section id="behavior">
+
+			<div class="page-header">
+				<a name="behavior"></a>
+				<h1>Behavior</h1>
+			</div>
+
+			<h3>Title</h3>
+			<p>
+				Default note title:
+				<select id="note-title-type" class="span2">
+					<option value="text">Text</option>
+					<option value="date">Date</option>
+					<option value="timestamp">Timestamp</option>
+				</select>
+				<input id="note-title-text" type="text" value="Note" />
+			</p>
+			<p>
+				Action when double clicking note title:
+				<select id="title-double-click" class="span3">
+					<option value="collapse">Collapse/expand note</option>
+					<option value="settings">Open note settings</option>
+				</select>
+			</p>
+
+			<h3>Deleting</h3>
+			<p>
+				<label class="checkbox">
+					<input type="checkbox" id="delete-prompt" value="true" />
+					Prompt me when deleting individual notes.
+				</label>
+			</p>
+			<p>
+				<label class="checkbox">
+					<input type="checkbox" id="note-backup" value="true" />
+					Remember my last deleted note.
+				</label>
+			</p>
+
+			<!--
+			<h3>Filtering</h3>
+			<div class="alert alert-info">
+				Please be aware that searching through the entire note's text can
+				result in decreased performance.
+			</div>
+			<p>
+				<label class="checkbox">
+					<input type="checkbox" id="note-filter" value="true" />
+					When filtering notes, search the entire note, not just the title.
+				</label>
+			</p>
+			-->
+
+			<h3>
+				Context Menu
+				<small><a href="#" data-toggle="modal" data-target="#modal-desc-context-menu">More info</a></small>
+			</h3>
+			<p>
+				<label class="checkbox">
+					<input type="checkbox" id="context-menu" value="true" />
+					Show in Chrome's context menu.
+				</label>
+				<!--
+				<label class="checkbox">
+					<input type="checkbox" id="context-menu-switch" value="true" />
+					Switch to Sticky Notes on adding a new note (if open)
+				</label>
+				-->
+			</p>
+
+			<h3>Formatting</h3>
+			<p>
+				<label class="checkbox">
+					<input type="checkbox" id="visual-controls" value="true" />
+					Enable visual controls for text formatting.
+				</label>
+			</p>
+
+			<h3>Opening</h3>
+			<p>
+				<label class="checkbox">
+					<input type="checkbox" id="popup" value="true" />
+					Open Sticky Notes in popup instead of in a tab.
+				</label>
+			</p>
+
+		</section>
+
+		<hr class="soften" />
+
+		<section id="import-export">
+
+			<div class="page-header">
+				<h1>Import/Export</h1>
+			</div>
+
+			<div class="row-fluid show-grid">
+				<div class="span6">
+					<p>
+						To import notes and settings, click <b>Import</b> and paste settings you previously saved.
+						Note that importing your settings will erase all saved options! Once the import is
+						complete, you will be taken back to the app's main page.
+					</p>
+				</div>
+				<div class="span6">
+					<p>
+						Easily export your notes and settings to another computer. To export
+						your settings, click <b>Export</b> and copy all of the generated text that appears.
+					</p>
+				</div>
+			</div>
+
+			<div class="row-fluid show-grid">
+				<div class="span6">
+					<p><a id="import" href="#" class="btn">Import <i class="icon-chevron-down"></i></a></p>
+
+					<textarea id="textarea-import" class="hide"></textarea>
+					<a id="import-forreals" class="btn btn-inverse hide" href="#">Import Notes and Settings <i class="icon-chevron-right icon-white"></i></a>
+				</div>
+				<div class="span6">
+					<p><a id="export" href="#" class="btn">Export <i class="icon-chevron-down"></i></a></p>
+
+					<textarea id="textarea-export" class="hide"></textarea>
+				</div>
+			</div>
+		</section>
+
+	</div>
+
+	<div id="footer" class="clearfix"></div>
+
+	<div id="modal-bg-message" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3>Background Change</h3>
+		</div>
+		<div class="modal-body">
+			Background changed successfully!
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+			<a href="main.html" class="btn btn-inverse">Back to Sticky Notes <i class="icon-chevron-right icon-white"></i></a>
+		</div>
+	</div>
+
+	<div id="modal-import-message" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3>Importing Error</h3>
+		</div>
+		<div class="modal-body">
+			There's nothing to import.
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Okay</a>
+		</div>
+	</div>
+
+	<div id="modal-reset-note" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3><i class="icon-repeat flip"></i> Reset Note Appearance</h3>
+		</div>
+		<div class="modal-body">
+			This will remove the customized settings for when you create a new note.
+			Are you sure?
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn btn-danger" data-dismiss="modal">Yes</a>
+			<a href="#" class="btn" data-dismiss="modal">No</a>
+		</div>
+	</div>
+
+	<div id="modal-reset-note-success" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3><i class="icon-repeat flip"></i> Reset Note Appearance</h3>
+		</div>
+		<div class="modal-body">
+			Default note settings reset successfully.
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Okay</a>
+			<a href="main.html" class="btn btn-inverse">Back to Sticky Notes <i class="icon-chevron-right icon-white"></i></a>
+		</div>
+	</div>
+
+	<div id="modal-bg-more" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3>Choose a Background</h3>
+		</div>
+		<div class="modal-body">
+			<ul class="thumbnails background-list">
+
+				<li class="span2">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/black_linen_v2.png');"></span>
+					</a>
+				</li>
+				<li class="span2">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/black_paper.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/bright_squares.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/always_grey.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/brushed_alu.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/black_thread.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/brushed_alu_dark.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/candyhole.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/carbon_fibre.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/carbon_fibre_big.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/carbon_fibre_v2.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/cardboard.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/checkered_pattern.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/circles.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/classy_fabric.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/concrete_wall.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/concrete_wall_2.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/concrete_wall_3.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/connect.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/cork_1.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/crissXcross.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/crossed_stripes.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/crosses.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/cubes.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/darkdenim3.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/dark_brick_wall.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/dark_circles.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/dark_leather.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/dark_matter.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/dark_mosaic.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/dark_stripes.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/dark_wood.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/black_scales.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/darth_stripe.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/denim.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/diagmonds.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/diagonal-noise.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/diamonds.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/double_lined.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/dvsup.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/elastoplast.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/elegant_grid.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/exclusive_paper.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/fabric_1.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/fake_brick.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/fancy_deboss.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/felt.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/flowers.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/foggy_birds.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/foil.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/gold_scale.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/graphy.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/gray_sand.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/green-fibers.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/green_dust_scratch.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/green_gobbler.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/gridme.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/grilled.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/groovepaper.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/grunge_wall.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/gun_metal.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/handmadepaper.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/hixs_pattern_evolution.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/inflicted.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/irongrip.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/knitted-netting.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/leather_1.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/light_alu.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/light_checkered_tiles.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/light_grey_floral_motif.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/light_honeycomb.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/lined_paper.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/littleknobs.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/little_pluses.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/merely_cubed.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/micro_carbon.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/mirrored_squares.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/nami.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/noise_pattern_with_crosslines.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/noisy.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/old_mathematics.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/old_wall.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/padded.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/paper_1.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/paper_2.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/paper_3.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/paven.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/pineapplecut.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/pinstripe.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/plaid.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/polaroid.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/polonez_car.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/pool_table.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/project_papper.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/px_by_Gre3g.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/random_grey_variations.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/ravenna.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/real_cf.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/ricepaper.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/ricepaper2.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/rip_jobs.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/robots.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/rockywall.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/roughcloth.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/rubber_grip.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/silver_scales.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/small-crackle-bright.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/small_tiles.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/smooth_wall.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/soft_circle_scales.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/soft_pad.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/soft_wallpaper.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/squares.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/square_bg.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/starring.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/struckaxiom.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/stucco.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/subtle_freckles.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/subtle_orange_emboss.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/tactile_noise.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/texturetastic_gray.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/triangles.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/type.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/vertical_cloth.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/vichy.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/washi.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/wavecut.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/whitediamond.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/whitey.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/white_brick_wall.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/white_carbon.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/white_paperboard.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/white_plaster.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/white_sand.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/white_texture.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/wood_1.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/wood_pattern.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/woven.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/xv.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/zigzag.png');"></span>
+					</a>
+				</li>
+
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/beige_paper.png');"></span>
+					</a>
+				</li>
+				<li class="span2 bg">
+					<a class="thumbnail" href="#">
+						<span style="background-image: url('http://dl.dropbox.com/u/73603348/StickyNotesPatterns/bgnoise_lg.png');"></span>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+		</div>
+	</div>
+
+	<div id="modal-desc-context-menu" class="modal fade">
+		<div class="modal-header">
+			<a href="#" class="close" data-dismiss="modal">&times;</a>
+			<h3>About the Context Menu</h3>
+		</div>
+		<div class="modal-body">
+			<p>
+				This menu contains shortcuts to open Sticky Notes, as well as allowing you to
+				add links to new notes without having to switch tabs.
+			</p>
+			<p>
+				Right-click (or CTRL-click if you're on a Mac) anywhere on the page to bring up the
+				context menu. There are always two options: "Open Sticky Notes" and
+				"Save Page."
+			</p>
+			<p>
+				"Open Sticky Notes" will, of course, open the app. If you've already got Sticky Notes open, clicking
+				this will switch to it. "Save page" adds the current page's URL to a new note.
+			</p>
+			<p>
+				If you right-click a link, the option "Save link" will save the link's URL to a new note.
+				If you right-click a text selection, "Save selection" will save the selected text to a new note.
+				If you right-click an image, "Save image" will save the image to a new note.
+			</p>
+			<p>
+				<span class="label label-info">Heads up!</span> Currently, the image itself will be put into a note. Let me know, either on the
+				<a href="http://eichefam.net/stickynotes/support" target="_blank">support page</a> or on the
+				Chrome Store's <a href="https://chrome.google.com/webstore/detail/mmfklpmdfldnnjbkdmamhokiphfkfieg/reviews" target="_blank">app feedback page</a>
+				if you would like an option to save the image's path instead.
+			</p>
+			<p>
+				Please note (no pun intended) that after you enable the context menu option, it will only become active after you
+				restart your browser.
+			</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Okay</a>
+		</div>
+	</div>
+
+</body>
+
+</html>
